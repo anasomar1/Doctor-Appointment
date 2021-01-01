@@ -42,28 +42,44 @@ main {
   padding: 0 50px;
   justify-content: center;
   align-items: center;
-  h3 {
-    font-size: 1.5rem;
-    color: $neutralLight;
-    margin-bottom: 1rem;
+  .appointment {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem;
+    border-radius: 2rem;
+    min-height: 3vh;
+    width: 100%;
+    margin-bottom: 2rem;
+    background: $primaryDark;
+    .add {
+      color: $support;
+      font-size: 1.3rem;
+      margin-right: 1rem;
+      cursor: pointer;
+    }
+    h3 {
+      font-size: 1.2rem;
+      color: $neutralLight;
+    }
   }
 
   form {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     input {
       font-family: inherit;
       font-size: 100%;
+      width: 20%;
       margin-right: 2rem;
       padding: 0.5rem 0.75rem;
       outline: none;
       border: none;
       border-radius: 2rem;
     }
-    input[type="date"],
-    input[type="time"] {
+    input[type="date"] {
       color: gray;
     }
 
@@ -72,11 +88,29 @@ main {
       font-weight: bold;
       color: lighten($neutralLight, 50%);
     }
+  }
+}
 
-    .add {
-      color: $support;
-      font-size: 1.6rem;
-      cursor: pointer;
-    }
+//List item styling
+
+.list-container {
+  padding: 1rem 2rem;
+  margin-top: 3rem;
+  color: $primaryLight;
+  border-bottom: 2px solid hsla(185, 81%, 29%, 0.4);
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    color: rgb(255, 255, 255);
+    font-weight: normal;
+  }
+  p {
+    color: $neutralLight;
+  }
+  .remove {
+    color: rgb(175, 92, 92);
   }
 }

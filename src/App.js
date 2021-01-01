@@ -1,7 +1,8 @@
 import React from "react";
 import "./index.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faMinus, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faEdit } from "@fortawesome/free-solid-svg-icons";
+import ListItem from "./components/ListItem";
 
 const App = () => {
   return (
@@ -12,7 +13,14 @@ const App = () => {
           <p>Your healthy solution</p>
         </header>
         <main>
-          <h3>Book an appointment right now</h3>
+          <div className="appointment">
+            <FontAwesomeIcon
+              title="Add Appointment"
+              className="add"
+              icon={faPlus}
+            />
+            <h3>Book an appointment!</h3>
+          </div>
           <form>
             <label htmlFor="name">Name</label>
 
@@ -29,15 +37,11 @@ const App = () => {
             <input type="date" id="date" name="date" />
 
             <label htmlFor="time" required>
-              Time
+              Condition
             </label>
-            <input type="time" id="time" name="time" />
-            <FontAwesomeIcon
-              title="Add Appointment"
-              className="add"
-              icon={faPlus}
-            />
+            <input type="text" id="condition" name="condition" required />
           </form>
+          <ListItem />
         </main>
       </div>
     </div>
