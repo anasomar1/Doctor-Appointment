@@ -1,0 +1,82 @@
+$primaryDark: #0a558c;
+$primaryLight: #b6e0fe;
+$neutralDark: #243b53;
+$neutralLight: #d9e2ec;
+$support: #0e7c86;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  background: $neutralDark;
+  height: 100vh;
+}
+
+header {
+  min-height: 10vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: $primaryDark;
+
+  h2 {
+    font-size: 2rem;
+    color: $neutralLight;
+  }
+
+  p {
+    color: lighten($neutralLight, 90%);
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 3rem auto;
+  padding: 0 50px;
+  justify-content: center;
+  align-items: center;
+  h3 {
+    font-size: 1.5rem;
+    color: $neutralLight;
+    margin-bottom: 1rem;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    input {
+      font-family: inherit;
+      font-size: 100%;
+      margin-right: 2rem;
+      padding: 0.5rem 0.75rem;
+      outline: none;
+      border: none;
+      border-radius: 2rem;
+    }
+    input[type="date"],
+    input[type="time"] {
+      color: gray;
+    }
+
+    label {
+      margin-right: 1rem;
+      font-weight: bold;
+      color: lighten($neutralLight, 50%);
+    }
+
+    .add {
+      color: $support;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+  }
+}
