@@ -82,9 +82,6 @@ main {
       border: none;
       border-radius: 2rem;
     }
-    input[type="date"] {
-      color: gray;
-    }
 
     label {
       margin-right: 1rem;
@@ -113,7 +110,9 @@ main {
 }
 
 //List item styling
-
+ul {
+  width: 100%;
+}
 .list-container {
   padding: 1rem 2rem;
   margin-top: 3rem;
@@ -131,7 +130,47 @@ main {
   p {
     color: $neutralLight;
   }
+
   .remove {
     color: rgb(175, 92, 92);
+  }
+}
+
+// Edit contianer
+.edit-container {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  justify-content: space-around;
+  align-items: center;
+  background: lighten($neutralDark, 10%);
+
+  .form-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  input {
+    font-family: inherit;
+    font-size: 100%;
+    width: 100%;
+    margin: 0rem 2rem;
+    padding: 0.5rem 0.75rem;
+    outline: none;
+    border: none;
+    border-radius: 2rem;
+  }
+
+  label {
+    margin-right: 1rem;
+    font-weight: bold;
+    color: lighten($neutralLight, 50%);
+  }
+  .cancel {
+    background: rgb(138, 72, 72);
+    margin-right: 0.5rem;
   }
 }

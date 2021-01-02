@@ -11,7 +11,7 @@ const App = () => {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [condition, setCondition] = useState("");
-  const [toggle, setToggle] = useState(false);
+  const [isToggled, setIsToggle] = useState(false);
   const [appointments, setAppointments] = useState([]);
 
   //Handlers
@@ -57,7 +57,20 @@ const App = () => {
     setAppointments(filteredList);
   };
 
-  const editHandler = (id) => {};
+  const editHandler = (id, newName, newDate, newCondition) => {
+    const editedAppointments = appointments.map((appointment) => {
+      if (appointment.id === id) {
+        return {
+          ...appointment,
+          name: newName,
+          date: newDate,
+          condition: newCondition,
+        };
+      }
+      return appointment;
+    });
+    setAppointments(editedAppointments);
+  };
   return (
     <div className="App">
       <div className="container">
@@ -70,12 +83,12 @@ const App = () => {
             <FontAwesomeIcon
               title="Add Appointment"
               className="add"
-              icon={toggle ? faMinus : faPlus}
-              onClick={() => setToggle(!toggle)}
+              icon={isToggled ? faMinus : faPlus}
+              onClick={() => setIsToggle(!isToggled)}
             />
             <h3>Book an appointment!</h3>
           </div>
-          {toggle && (
+          {isToggled && (
             <form onSubmit={submitHandler}>
               <label htmlFor="name">Name</label>
 
@@ -114,19 +127,22 @@ const App = () => {
               <div ref={messageContainer} className="msg"></div>
             </form>
           )}
-          {appointments.map((appointment) => {
-            const { name, date, condition, id } = appointment;
-            return (
-              <ListItem
-                name={name}
-                date={date}
-                condition={condition}
-                id={id}
-                key={id}
-                deleteHandler={deleteHandler}
-              />
-            );
-          })}
+          <ul>
+            {appointments.map((appointment) => {
+              const { name, date, condition, id } = appointment;
+              return (
+                <ListItem
+                  name={name}
+                  date={date}
+                  condition={condition}
+                  id={id}
+                  key={id}
+                  deleteHandler={deleteHandler}
+                  editHandler={editHandler}
+                />
+              );
+            })}
+          </ul>
         </main>
       </div>
     </div>
