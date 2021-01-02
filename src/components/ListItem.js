@@ -25,7 +25,7 @@ const ListItem = ({
     }
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = () => {
     editHandler(id, newName, newDate, newCondition);
     setNewName("");
     setNewDate("");

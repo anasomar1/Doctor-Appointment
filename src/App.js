@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { v4 as uuid_v4 } from "uuid";
 import "./index.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,7 +6,6 @@ import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import ListItem from "./components/ListItem";
 
 const App = () => {
-  const messageContainer = useRef();
   //States
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
@@ -34,17 +33,7 @@ const App = () => {
         ...appointments,
         { name, date, condition, id: uuid_v4() },
       ]);
-      messageContainer.current.textContent = "Appointment added";
-      messageContainer.current.style.border = "2px dashed green";
-      setTimeout(() => {
-        messageContainer.current.textContent = "";
-        messageContainer.current.style.border = "";
-      }, 1000);
-    } else {
-      messageContainer.current.textContent = "Please fill all fields";
-      messageContainer.current.style.border = "2px dashed red";
     }
-
     setName("");
     setDate("");
     setCondition("");
@@ -73,78 +62,78 @@ const App = () => {
   };
   return (
     <div className="App">
-      <div className="container">
-        <header>
-          <h2>BlueDoc</h2>
-          <p>Your healthy solution</p>
-        </header>
-        <main>
-          <div className="appointment">
-            <FontAwesomeIcon
-              title="Add Appointment"
-              className="add"
-              icon={isToggled ? faMinus : faPlus}
-              onClick={() => setIsToggle(!isToggled)}
+      <header>
+        <h2>BlueDoc</h2>
+        <p>Your healthy solution</p>
+      </header>
+      <main>
+        <div className="appointment">
+          <FontAwesomeIcon
+            title="Add Appointment"
+            className="add"
+            icon={isToggled ? faMinus : faPlus}
+            onClick={() => setIsToggle(!isToggled)}
+          />
+          <h3>Book an appointment!</h3>
+        </div>
+        {isToggled && (
+          <form onSubmit={submitHandler}>
+            <label htmlFor="name">Name</label>
+
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your name"
+              value={name}
+              onChange={inputHandler}
+              required
             />
-            <h3>Book an appointment!</h3>
-          </div>
-          {isToggled && (
-            <form onSubmit={submitHandler}>
-              <label htmlFor="name">Name</label>
+            <label htmlFor="date" required>
+              Date
+            </label>
+            <input
+              value={date}
+              type="date"
+              id="date"
+              name="date"
+              onChange={inputHandler}
+              required
+            />
 
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Your name"
-                value={name}
-                onChange={inputHandler}
+            <label htmlFor="time" required>
+              Condition
+            </label>
+            <input
+              type="text"
+              id="condition"
+              value={condition}
+              name="condition"
+              onChange={inputHandler}
+              required
+            />
+            <button className="btn" type="submit">
+              Add appointment
+            </button>
+          </form>
+        )}
+        <ul>
+          {appointments.map((appointment) => {
+            const { name, date, condition, id } = appointment;
+            return (
+              <ListItem
+                name={name}
+                date={date}
+                condition={condition}
+                id={id}
+                key={id}
+                deleteHandler={deleteHandler}
+                editHandler={editHandler}
               />
-              <label htmlFor="date" required>
-                Date
-              </label>
-              <input
-                value={date}
-                type="date"
-                id="date"
-                name="date"
-                onChange={inputHandler}
-              />
-
-              <label htmlFor="time" required>
-                Condition
-              </label>
-              <input
-                type="text"
-                id="condition"
-                value={condition}
-                name="condition"
-                onChange={inputHandler}
-              />
-              <button className="btn" type="submit">
-                Add appointment
-              </button>
-              <div ref={messageContainer} className="msg"></div>
-            </form>
-          )}
-          <ul>
-            {appointments.map((appointment) => {
-              const { name, date, condition, id } = appointment;
-              return (
-                <ListItem
-                  name={name}
-                  date={date}
-                  condition={condition}
-                  id={id}
-                  key={id}
-                  deleteHandler={deleteHandler}
-                  editHandler={editHandler}
-                />
-              );
-            })}
-          </ul>
-        </main>
-      </div>
+            );
+          })}
+        </ul>
+      </main>
     </div>
   );
 };

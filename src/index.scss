@@ -13,7 +13,7 @@ $support: #0e7c86;
 
 .App {
   background: $neutralDark;
-  height: 100vh;
+  min-height: 100vh;
   font-family: "Poppins", sans-serif;
 }
 
@@ -99,13 +99,6 @@ main {
       background: $support;
       color: $neutralLight;
     }
-    .msg {
-      position: absolute;
-      color: $neutralLight;
-      right: 0;
-      bottom: -150%;
-      padding: 0.5rem 0.75rem;
-    }
   }
 }
 
@@ -114,7 +107,7 @@ ul {
   width: 100%;
 }
 .list-container {
-  padding: 1rem 2rem;
+  padding: 1rem 0rem;
   margin-top: 3rem;
   color: $primaryLight;
   border-bottom: 2px solid hsla(185, 81%, 29%, 0.4);
@@ -138,7 +131,6 @@ ul {
 
 // Edit contianer
 .edit-container {
-  position: absolute;
   display: flex;
   width: 100%;
   margin: 0 auto;
@@ -172,5 +164,103 @@ ul {
   .cancel {
     background: rgb(138, 72, 72);
     margin-right: 0.5rem;
+  }
+}
+
+// Responsive Design
+
+@media (max-width: 1670px) {
+  main {
+    width: 90%;
+  }
+  .cta {
+    display: flex;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 1386px) {
+  .cta {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .edit-container {
+    .cancel {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+    }
+    .btn {
+      font-size: 90%;
+    }
+  }
+}
+
+@media (max-width: 1298px) {
+  main {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1186px) {
+  main {
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      label,
+      input {
+        margin: 0.5rem 0;
+        width: 40%;
+      }
+      .btn {
+        margin-top: 0.5rem;
+      }
+    }
+  }
+  .edit-container {
+    display: block;
+    padding: 1rem;
+    width: 40%;
+    .cta {
+      flex-direction: row;
+      margin-bottom: 1rem;
+      .cancel {
+        margin-bottom: 0;
+      }
+    }
+    .form-group {
+      display: block;
+      label,
+      input {
+        margin: 0.5rem 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 706px) {
+  main form input {
+    width: 60%;
+  }
+  .edit-container {
+    width: 60%;
+  }
+}
+@media (max-width: 508px) {
+  main form input {
+    width: 80%;
+  }
+  .edit-container {
+    width: 80%;
+  }
+}
+@media (max-width: 400px) {
+  main form input {
+    width: 100%;
+  }
+  .edit-container {
+    width: 100%;
   }
 }
