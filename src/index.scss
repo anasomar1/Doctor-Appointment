@@ -98,6 +98,11 @@ main {
       border-radius: 2rem;
       background: $support;
       color: $neutralLight;
+      cursor: pointer;
+
+      &:hover {
+        background: darken($support, 10%);
+      }
     }
   }
 }
@@ -109,11 +114,12 @@ ul {
 .list-container {
   padding: 1rem 0rem;
   margin-top: 3rem;
+
   color: $primaryLight;
   border-bottom: 2px solid hsla(185, 81%, 29%, 0.4);
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 
   h3 {
@@ -123,9 +129,21 @@ ul {
   p {
     color: $neutralLight;
   }
+  .edit,
+  .remove {
+    cursor: pointer;
+    flex: 0;
+  }
 
   .remove {
     color: rgb(175, 92, 92);
+
+    &:hover {
+      color: rgb(156, 73, 73);
+    }
+  }
+  .edit:hover {
+    color: white;
   }
 }
 

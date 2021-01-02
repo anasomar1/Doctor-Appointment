@@ -85,11 +85,12 @@ const ListItem = ({
         className="remove"
         onClick={() => deleteHandler(id)}
       />
-      <h3 className="name">{name}</h3>
+      <h3>{name}</h3>
       <p className="condition">{condition}</p>
       <div className="date">{date} </div>
       <FontAwesomeIcon
         icon={faEdit}
+        className="edit"
         onClick={() => {
           setIsEditing(true);
         }}
