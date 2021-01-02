@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 $primaryDark: #0a558c;
 $primaryLight: #b6e0fe;
 $neutralDark: #243b53;
@@ -13,6 +14,7 @@ $support: #0e7c86;
 .App {
   background: $neutralDark;
   height: 100vh;
+  font-family: "Poppins", sans-serif;
 }
 
 header {
@@ -67,6 +69,7 @@ main {
   form {
     width: 100%;
     display: flex;
+    position: relative;
     justify-content: space-around;
     align-items: center;
     input {
@@ -87,6 +90,24 @@ main {
       margin-right: 1rem;
       font-weight: bold;
       color: lighten($neutralLight, 50%);
+    }
+
+    .btn {
+      font-family: inherit;
+      font-size: 100%;
+      padding: 0.5rem 0.75rem;
+      outline: none;
+      border: none;
+      border-radius: 2rem;
+      background: $support;
+      color: $neutralLight;
+    }
+    .msg {
+      position: absolute;
+      color: $neutralLight;
+      right: 0;
+      bottom: -150%;
+      padding: 0.5rem 0.75rem;
     }
   }
 }

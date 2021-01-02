@@ -2,13 +2,17 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
-const ListItem = () => {
+const ListItem = ({ name, condition, date, id, deleteHandler }) => {
   return (
     <div className="list-container">
-      <FontAwesomeIcon icon={faTrash} className="remove" />
-      <h3 className="name">Anas</h3>
-      <p className="condition">I have a rash on my leg and it keeps itching </p>
-      <div className="date">Jan 21, 2021 </div>
+      <FontAwesomeIcon
+        icon={faTrash}
+        className="remove"
+        onClick={() => deleteHandler(id)}
+      />
+      <h3 className="name">{name}</h3>
+      <p className="condition">{condition}</p>
+      <div className="date">{date} </div>
       <FontAwesomeIcon icon={faEdit} />
     </div>
   );
