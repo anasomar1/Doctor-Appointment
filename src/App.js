@@ -68,7 +68,7 @@ const App = () => {
   }, []);
   useEffect(() => {
     localStorage.setItem("apps", JSON.stringify(appointments));
-  });
+  }, [appointments]);
 
   return (
     <div className="App">
