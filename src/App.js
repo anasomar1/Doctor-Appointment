@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuid_v4 } from "uuid";
 import "./index.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -60,6 +60,16 @@ const App = () => {
     });
     setAppointments(editedAppointments);
   };
+  useEffect(() => {
+    const data = localStorage.getItem("apps");
+    if (data) {
+      setAppointments(JSON.parse(data));
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("apps", JSON.stringify(appointments));
+  });
+
   return (
     <div className="App">
       <header>
